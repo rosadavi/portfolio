@@ -2,10 +2,12 @@ package com.rosadavi.portfolio_api.service;
 
 import com.rosadavi.portfolio_api.entity.Experience;
 import com.rosadavi.portfolio_api.repository.ExperienceRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class ExperienceService {
     private final ExperienceRepository experienceRepository;
 

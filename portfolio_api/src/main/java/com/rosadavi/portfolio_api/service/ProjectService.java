@@ -2,10 +2,12 @@ package com.rosadavi.portfolio_api.service;
 
 import com.rosadavi.portfolio_api.entity.Project;
 import com.rosadavi.portfolio_api.repository.ProjectRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class ProjectService {
     private final ProjectRepository projectRepository;
 
