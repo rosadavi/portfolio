@@ -3,10 +3,7 @@ package com.rosadavi.portfolio_api.controller;
 import com.rosadavi.portfolio_api.entity.Experience;
 import com.rosadavi.portfolio_api.service.ExperienceService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,8 +22,8 @@ public class ExperienceController {
         return ResponseEntity.ok(experienceService.save(experience));
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<Experience>> getExperienceByUserId(UUID userId) {
-        return ResponseEntity.ok(experienceService.getExperienceByUserId(userId));
+    @GetMapping("/list/{id}")
+    public ResponseEntity<List<Experience>> getExperienceByUserId(@PathVariable UUID id) {
+        return ResponseEntity.ok(experienceService.getExperienceByUserId(id));
     }
 }

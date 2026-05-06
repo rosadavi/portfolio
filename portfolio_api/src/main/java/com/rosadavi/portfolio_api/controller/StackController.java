@@ -3,10 +3,7 @@ package com.rosadavi.portfolio_api.controller;
 import com.rosadavi.portfolio_api.entity.Stack;
 import com.rosadavi.portfolio_api.service.StackService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,8 +22,8 @@ public class StackController {
         return ResponseEntity.ok(stackService.save(stack));
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<Stack>> getStackByUserId(UUID userId) {
-        return ResponseEntity.ok(stackService.getStackByUser(userId));
+    @GetMapping("/list/{id}")
+    public ResponseEntity<List<Stack>> getStackByUserId(@PathVariable  UUID id) {
+        return ResponseEntity.ok(stackService.getStackByUser(id));
     }
 }

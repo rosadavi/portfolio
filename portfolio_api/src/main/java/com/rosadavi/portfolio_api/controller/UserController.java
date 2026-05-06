@@ -21,8 +21,8 @@ public class UserController {
         return ResponseEntity.ok(userService.save(user));
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<User> getUserByUserId(@RequestBody UUID userId) {
-        return ResponseEntity.ok(userService.getUserByUserId(userId));
+    @GetMapping("/list/{id}")
+    public ResponseEntity<User> getUserByUserId(@PathVariable UUID id) {
+        return ResponseEntity.ok(userService.getUserByUserId(id));
     }
 }
