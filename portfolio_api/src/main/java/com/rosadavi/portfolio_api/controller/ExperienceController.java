@@ -18,7 +18,7 @@ public class ExperienceController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Experience> createExperience(Experience experience) {
+    public ResponseEntity<Experience> createExperience(@RequestBody Experience experience) {
         return ResponseEntity.ok(experienceService.save(experience));
     }
 

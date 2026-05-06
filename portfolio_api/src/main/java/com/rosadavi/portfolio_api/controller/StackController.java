@@ -18,7 +18,7 @@ public class StackController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Stack> createStack(Stack stack) {
+    public ResponseEntity<Stack> createStack(@RequestBody Stack stack) {
         return ResponseEntity.ok(stackService.save(stack));
     }
 
