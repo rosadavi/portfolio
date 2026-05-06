@@ -4,6 +4,8 @@ import com.rosadavi.portfolio_api.entity.User;
 import com.rosadavi.portfolio_api.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -14,5 +16,9 @@ public class UserService {
 
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    public User getUserByUserId(UUID user_id) {
+        return userRepository.findByUserId(user_id);
     }
 }
