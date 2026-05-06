@@ -29,7 +29,7 @@ public class Experience {
 
     private LocalDate dateEnd;
 
-    private boolean actual;
+    private Boolean actual;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
