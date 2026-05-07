@@ -1,5 +1,7 @@
 package com.rosadavi.portfolio_api.controller;
 
+import com.rosadavi.portfolio_api.dto.experienceDTO.ExperienceCreateDTO;
+import com.rosadavi.portfolio_api.dto.experienceDTO.ExperienceResponseDTO;
 import com.rosadavi.portfolio_api.entity.Experience;
 import com.rosadavi.portfolio_api.service.ExperienceService;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +20,12 @@ public class ExperienceController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Experience> createExperience(@RequestBody Experience experience) {
+    public ResponseEntity<ExperienceCreateDTO> createExperience(@RequestBody Experience experience) {
         return ResponseEntity.ok(experienceService.save(experience));
     }
 
     @GetMapping("/list/{id}")
-    public ResponseEntity<List<Experience>> getExperienceByUserId(@PathVariable UUID id) {
+    public ResponseEntity<List<ExperienceResponseDTO>> getExperienceByUserId(@PathVariable UUID id) {
         return ResponseEntity.ok(experienceService.getExperienceByUserId(id));
     }
 }
