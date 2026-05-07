@@ -1,5 +1,6 @@
 package com.rosadavi.portfolio_api.controller;
 
+import com.rosadavi.portfolio_api.dto.userDTO.UserCreateDTO;
 import com.rosadavi.portfolio_api.dto.userDTO.UserResponseDTO;
 import com.rosadavi.portfolio_api.entity.User;
 import com.rosadavi.portfolio_api.service.UserService;
@@ -18,7 +19,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<UserCreateDTO> createUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.save(user));
     }
 

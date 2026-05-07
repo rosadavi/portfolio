@@ -3,6 +3,7 @@ package com.rosadavi.portfolio_api.service;
 import com.rosadavi.portfolio_api.dto.experienceDTO.ExperienceSummaryDTO;
 import com.rosadavi.portfolio_api.dto.projectDTO.ProjectSummaryDTO;
 import com.rosadavi.portfolio_api.dto.stackDTO.StackSummaryDTO;
+import com.rosadavi.portfolio_api.dto.userDTO.UserCreateDTO;
 import com.rosadavi.portfolio_api.dto.userDTO.UserResponseDTO;
 import com.rosadavi.portfolio_api.entity.User;
 import com.rosadavi.portfolio_api.repository.UserRepository;
@@ -18,8 +19,18 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User save(User user) {
-        return userRepository.save(user);
+    public UserCreateDTO save(User user) {
+        User newUser = userRepository.save(user);
+
+        return new UserCreateDTO(
+                newUser.getName(),
+                newUser.getDescription(),
+                newUser.getTopic(),
+                newUser.getGithub(),
+                newUser.getEmail(),
+                newUser.getPhone(),
+                newUser.getLinkedin()
+        );
     }
 
     public UserResponseDTO getUserByUserId(UUID user_id) {
