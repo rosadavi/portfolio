@@ -1,5 +1,6 @@
 package com.rosadavi.portfolio_api.service;
 
+import com.rosadavi.portfolio_api.dto.experienceAttributesDTO.ExperienceAttributesCreateDTO;
 import com.rosadavi.portfolio_api.entity.ExperienceAttributes;
 import com.rosadavi.portfolio_api.repository.ExperienceAttributesRepository;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,11 @@ public class ExperienceAttributesService {
         this.experienceAttributesRepository = experienceAttributesRepository;
     }
 
-    public ExperienceAttributes save(ExperienceAttributes experienceAttributes) {
-        return experienceAttributesRepository.save(experienceAttributes);
+    public ExperienceAttributesCreateDTO save(ExperienceAttributes experienceAttributes) {
+        ExperienceAttributes newExperienceAttributes = experienceAttributesRepository.save(experienceAttributes);
+
+        return new ExperienceAttributesCreateDTO(
+                newExperienceAttributes.getDescription()
+        );
     }
 }
