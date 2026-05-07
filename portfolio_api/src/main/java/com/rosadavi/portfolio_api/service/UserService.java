@@ -1,5 +1,9 @@
 package com.rosadavi.portfolio_api.service;
 
+import com.rosadavi.portfolio_api.dto.experienceDTO.ExperienceSummaryDTO;
+import com.rosadavi.portfolio_api.dto.projectDTO.ProjectSummaryDTO;
+import com.rosadavi.portfolio_api.dto.stackDTO.StackSummaryDTO;
+import com.rosadavi.portfolio_api.dto.userDTO.UserResponseDTO;
 import com.rosadavi.portfolio_api.entity.User;
 import com.rosadavi.portfolio_api.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -18,7 +22,43 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUserByUserId(UUID user_id) {
-        return userRepository.findById(user_id).orElseThrow(() -> new RuntimeException("User not found!"));
+    public UserResponseDTO getUserByUserId(UUID user_id) {
+        User user = userRepository.findById(user_id).orElseThrow(() -> new RuntimeException("User not found!"));
+
+        return new UserResponseDTO(
+                user.getName(),
+                user.getDescription(),
+                user.getTopic(),
+                user.getGithub(),
+                user.getEmail(),
+                user.getPhone(),
+                user.getLinkedin(),
+                user.getProjects()
+                        .stream()
+                        .map(project -> new ProjectSummaryDTO(
+                                project.getTopic1(),
+                                project.getTopic2(),
+                                project.getTitle(),
+                                project.getDescription()
+                        ))
+                        .toList(),
+                user.getStacks()
+                        .stream()
+                        .map(stack -> new StackSummaryDTO(
+                                stack.getName(),
+                                stack.getUse()
+                        ))
+                        .toList(),
+                user.getExperiences()
+                        .stream()
+                        .map(experience -> new ExperienceSummaryDTO(
+                                experience.getName(),
+                                experience.getEnterprise(),
+                                experience.getDateInitial(),
+                                experience.getDateEnd(),
+                                experience.getActual()
+                        ))
+                        .toList()
+        );
     }
 }

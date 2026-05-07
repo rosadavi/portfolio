@@ -1,5 +1,6 @@
 package com.rosadavi.portfolio_api.controller;
 
+import com.rosadavi.portfolio_api.dto.userDTO.UserResponseDTO;
 import com.rosadavi.portfolio_api.entity.User;
 import com.rosadavi.portfolio_api.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/list/{id}")
-    public ResponseEntity<User> getUserByUserId(@PathVariable UUID id) {
+    public ResponseEntity<UserResponseDTO> getUserByUserId(@PathVariable UUID id) {
         return ResponseEntity.ok(userService.getUserByUserId(id));
     }
 }
