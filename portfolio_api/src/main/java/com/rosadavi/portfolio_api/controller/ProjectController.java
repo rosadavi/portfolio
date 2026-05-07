@@ -1,5 +1,7 @@
 package com.rosadavi.portfolio_api.controller;
 
+import com.rosadavi.portfolio_api.dto.projectDTO.ProjectCreateDTO;
+import com.rosadavi.portfolio_api.dto.projectDTO.ProjectResponseDTO;
 import com.rosadavi.portfolio_api.entity.Project;
 import com.rosadavi.portfolio_api.service.ProjectService;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +20,12 @@ public class ProjectController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Project> createProject(@RequestBody Project project) {
+    public ResponseEntity<ProjectCreateDTO> createProject(@RequestBody Project project) {
         return ResponseEntity.ok(projectService.save(project));
     }
 
     @GetMapping("/list/{id}")
-    public ResponseEntity<List<Project>> getProjectByUserId(@PathVariable UUID id) {
+    public ResponseEntity<List<ProjectResponseDTO>> getProjectByUserId(@PathVariable UUID id) {
         return ResponseEntity.ok(projectService.getProjectByUserId(id));
     }
 }
