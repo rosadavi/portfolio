@@ -1,5 +1,7 @@
 package com.rosadavi.portfolio_api.controller;
 
+import com.rosadavi.portfolio_api.dto.stackDTO.StackCreateDTO;
+import com.rosadavi.portfolio_api.dto.stackDTO.StackResponseDTO;
 import com.rosadavi.portfolio_api.entity.Stack;
 import com.rosadavi.portfolio_api.service.StackService;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +20,12 @@ public class StackController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Stack> createStack(@RequestBody Stack stack) {
+    public ResponseEntity<StackCreateDTO> createStack(@RequestBody Stack stack) {
         return ResponseEntity.ok(stackService.save(stack));
     }
 
     @GetMapping("/list/{id}")
-    public ResponseEntity<List<Stack>> getStackByUserId(@PathVariable  UUID id) {
+    public ResponseEntity<List<StackResponseDTO>> getStackByUserId(@PathVariable  UUID id) {
         return ResponseEntity.ok(stackService.getStackByUser(id));
     }
 }
