@@ -4,8 +4,10 @@ import com.rosadavi.portfolio_api.dto.experienceAttributesDTO.ExperienceAttribut
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 public record ExperienceResponseDTO(
+        UUID id,
         String name,
         String enterprise,
         LocalDate dateInitial,
