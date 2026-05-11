@@ -1,22 +1,30 @@
+type ExperienceAttribute = {
+  id: string;
+  description: string;
+};
+
 type Experience = {
-  period: string;
-  role: string;
-  company: string;
-  bullets: string[];
+  id: string;
+  name: string;
+  enterprise: string;
+  dateInitial: string;
+  dateEnd: string;
+  actual: boolean;
+  experienceAttribute: ExperienceAttribute[];
 };
 
 export function ExperienceItem({ exp }: { exp: Experience }) {
   return (
     <div className="exp-item">
       <div className="exp-period" style={{ whiteSpace: "pre-line" }}>
-        {exp.period}
+        {exp.dateInitial} - {exp.dateEnd}
       </div>
       <div>
-        <div className="exp-role">{exp.role}</div>
-        <div className="exp-company">{exp.company}</div>
+        <div className="exp-role">{exp.name}</div>
+        <div className="exp-company">{exp.enterprise}</div>
         <ul className="exp-bullets">
-          {exp.bullets.map((b, i) => (
-            <li key={i}>{b}</li>
+          {(exp.experienceAttribute ?? []).map((attr, i) => (
+            <li key={i}>{attr.description}</li>
           ))}
         </ul>
       </div>
