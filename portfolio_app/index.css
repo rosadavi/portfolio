@@ -283,8 +283,15 @@
     gap: 2rem;
     padding: 2rem 0;
     border-bottom: 0.5px solid var(--border);
+    min-width: 0;
   }
   .exp-item:last-child { border-bottom: none; }
+
+  .exp-item > div:last-child {
+    min-width: 0;
+    overflow: hidden;
+  }
+
   .exp-period {
     font-family: var(--mono);
     font-size: 11px;
@@ -315,6 +322,8 @@
     color: var(--muted);
     padding-left: 1rem;
     position: relative;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
   .exp-bullets li::before {
     content: '—';
