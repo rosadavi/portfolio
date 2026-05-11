@@ -1,31 +1,5 @@
 import { useUser } from "../hooks/useUser";
 
-type User = {
-  id: string;
-  name: string;
-  description: string;
-  topic: string;
-  github: string;
-  email: string;
-  phone: string;
-  linkedin: string;
-};
-
-type ContactKey = "email" | "phone" | "github" | "linkedin";
-
-type ContactField = {
-  label: string;
-  key: ContactKey;
-  href: ((u: User) => string) | null;
-};
-
-const CONTACT_FIELDS: ContactField[] = [
-  { label: "email", key: "email", href: (u) => `mailto:${u.email}` },
-  { label: "telefone", key: "phone", href: null },
-  { label: "github", key: "github", href: (u) => u.github },
-  { label: "linkedin", key: "linkedin", href: (u) => u.linkedin },
-];
-
 export function Hero() {
   const { data, loading, error } = useUser();
 
