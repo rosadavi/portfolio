@@ -214,16 +214,6 @@
     color: var(--muted);
     letter-spacing: 0.08em;
   }
-  .stack-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    margin-bottom: 4px;
-  }
-  .dot-be { background: var(--accent); }
-  .dot-fe { background: var(--accent2); }
-  .dot-db { background: var(--accent3); }
-  .dot-dv { background: #f5c842; }
  
   /* PROJECTS */
   .projects-grid {

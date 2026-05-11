@@ -3,7 +3,6 @@ import { useStack } from "../hooks/useStack";
 type StackItem = {
   name: string;
   use: string;
-  dot: string;
 };
 
 export function StackSection() {
@@ -18,7 +17,6 @@ export function StackSection() {
       <div className="stack-grid">
         {data.map((item: StackItem) => (
           <div key={item.name} className="stack-item">
-            <div className={`stack-dot ${item.dot}`} />
             <div className="stack-name">{item.name}</div>
             <div className="stack-type">{item.use}</div>
           </div>
