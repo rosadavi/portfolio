@@ -37,6 +37,7 @@ public class UserService {
         User user = userRepository.findById(user_id).orElseThrow(() -> new RuntimeException("User not found!"));
 
         return new UserResponseDTO(
+                user.getId(),
                 user.getName(),
                 user.getDescription(),
                 user.getTopic(),
@@ -47,6 +48,7 @@ public class UserService {
                 user.getProjects()
                         .stream()
                         .map(project -> new ProjectSummaryDTO(
+                                project.getId(),
                                 project.getTopic1(),
                                 project.getTopic2(),
                                 project.getTitle(),
@@ -56,6 +58,7 @@ public class UserService {
                 user.getStacks()
                         .stream()
                         .map(stack -> new StackSummaryDTO(
+                                stack.getId(),
                                 stack.getName(),
                                 stack.getUse()
                         ))
@@ -63,6 +66,7 @@ public class UserService {
                 user.getExperiences()
                         .stream()
                         .map(experience -> new ExperienceSummaryDTO(
+                                experience.getId(),
                                 experience.getName(),
                                 experience.getEnterprise(),
                                 experience.getDateInitial(),

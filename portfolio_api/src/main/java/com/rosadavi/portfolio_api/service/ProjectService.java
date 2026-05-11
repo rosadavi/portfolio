@@ -33,6 +33,7 @@ public class ProjectService {
         return projectRepository.findByUserId(userId)
                 .stream()
                 .map(projects -> new ProjectResponseDTO(
+                        projects.getId(),
                         projects.getTopic1(),
                         projects.getTopic2(),
                         projects.getTitle(),
@@ -40,6 +41,7 @@ public class ProjectService {
                         projects.getStacks()
                                 .stream()
                                 .map(stack -> new StackSummaryDTO(
+                                        stack.getId(),
                                         stack.getName(),
                                         stack.getUse()
                                 ))

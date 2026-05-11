@@ -37,6 +37,7 @@ public class ExperienceService {
         return experienceRepository.findByUserId(userId)
                 .stream()
                 .map(experience -> new ExperienceResponseDTO(
+                        experience.getId(),
                         experience.getName(),
                         experience.getEnterprise(),
                         experience.getDateInitial(),
@@ -45,6 +46,7 @@ public class ExperienceService {
                         experience.getExperienceAttributes()
                                 .stream()
                                 .map(experienceAttributes -> new ExperienceAttributesSummaryDTO(
+                                        experienceAttributes.getId(),
                                         experienceAttributes.getDescription()
                                 ))
                                 .toList()

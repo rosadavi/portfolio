@@ -29,6 +29,7 @@ public class StackService {
         return stackRepository.findByUserId(userId)
                 .stream()
                 .map(stack -> new StackResponseDTO(
+                        stack.getId(),
                         stack.getUse(),
                         stack.getName()
                 ))
