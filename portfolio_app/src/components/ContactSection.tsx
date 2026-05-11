@@ -1,44 +1,68 @@
+import { useUser } from "../hooks/useUser";
+
+type User = {
+  id: string;
+  name: string;
+  description: string;
+  topic: string;
+  github: string;
+  email: string;
+  phone: string;
+  linkedin: string;
+};
+
+type ContactKey = "email" | "phone" | "github" | "linkedin";
+
+type ContactField = {
+  label: string;
+  key: ContactKey;
+  href: ((u: User) => string) | null;
+};
+
+const CONTACT_FIELDS: ContactField[] = [
+  { label: "email", key: "email", href: (u) => `mailto:${u.email}` },
+  { label: "telefone", key: "phone", href: null },
+  { label: "github", key: "github", href: (u) => u.github },
+  { label: "linkedin", key: "linkedin", href: (u) => u.linkedin },
+];
+
 export function ContactSection() {
-  const CONTACTS = [
-    {
-      label: "email",
-      value: "davi.rosa.ofc@gmail.com",
-      href: "mailto:davi.rosa.ofc@gmail.com",
-    },
-    { label: "telefone", value: "(61) 99653-1102", href: null },
-    {
-      label: "github",
-      value: "github.com/rosadavi",
-      href: "https://github.com/rosadavi",
-    },
-    {
-      label: "linkedin",
-      value: "Davi Rosa",
-      href: "https://www.linkedin.com/in/davi-rosa-148520284/",
-    },
-  ];
+  const { data, loading, error } = useUser();
+
+  if (loading) return <div>Carregando...</div>;
+  if (error) return <div>Erro ao carregar contato: {error}</div>;
+  if (!data) return null;
 
   return (
     <section id="contato" className="section">
       <div className="section-label">Contato</div>
       <div className="contact-grid">
-        {CONTACTS.map((c) => (
-          <div key={c.label} className="contact-item">
-            <span className="contact-label">{c.label}</span>
-            {c.href ? (
-              <a
-                className="contact-val"
-                href={c.href}
-                target={c.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
-              >
-                {c.value}
-              </a>
-            ) : (
-              <span className="contact-val">{c.value}</span>
-            )}
-          </div>
-        ))}
+        {CONTACT_FIELDS.map(({ label, key, href }) => {
+          const value =
+            key === "github"
+              ? `github.com/${(data as User).github.split("/").pop()}`
+              : key === "linkedin"
+                ? `linkedin.com/in/${(data as User).linkedin.split("/").pop()}`
+                : (data as User)[key];
+          const url = href ? href(data as unknown as User) : null;
+          return (
+            <div key={label} className="contact-item">
+              <span className="contact-label">{label}</span>
+              {url ? (
+                <a
+                  className="contact-val"
+                  href={url}
+                  target={url.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                >
+                  {value}
+                </a>
+              ) : (
+                <span className="contact-val">{value}</span>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );
