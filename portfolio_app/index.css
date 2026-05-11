@@ -255,10 +255,10 @@
     display: inline-block;
     margin-bottom: 1rem;
   }
-  .tag-be { background: rgba(91,79,245,0.15); color: #8b80fa; }
-  .tag-fe { background: rgba(62,207,170,0.15); color: var(--accent2); }
-  .tag-full { background: rgba(240,90,79,0.12); color: #f07a72; }
-  .tag-java { background: rgba(245,200,66,0.12); color: #f5c842; }
+  .tag-1 { background: rgba(91,79,245,0.15); color: #8b80fa; }
+  .tag-2 { background: rgba(62,207,170,0.15); color: var(--accent2); }
+  .tag-3 { background: rgba(240,90,79,0.12); color: #f07a72; }
+  .tag-4 { background: rgba(245,200,66,0.12); color: #f5c842; }
   .proj-title {
     font-size: 17px;
     font-weight: 600;

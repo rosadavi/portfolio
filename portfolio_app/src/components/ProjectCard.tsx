@@ -12,12 +12,19 @@ type ProjectCardProps = {
     description: string;
     stack: Stack[];
   };
+  index: number;
 };
 
-export function ProjectCard({ project }: ProjectCardProps) {
+const TAG_CLASSES = ["tag-1", "tag-2", "tag-3", "tag-4"];
+
+export function ProjectCard({ project, index }: ProjectCardProps) {
+  const tagClass = TAG_CLASSES[index % TAG_CLASSES.length];
+
   return (
-    <div className={`project-card${project.topic1 ? " featured" : ""}`}>
-      <span className={`proj-tag ${project.topic2}`}>{project.topic2}</span>
+    <div className={`project-card featured`}>
+      <span className={`proj-tag ${tagClass}`}>
+        {project.topic1} · {project.topic2}
+      </span>
       <div className="proj-title">{project.title}</div>
       <div className="proj-desc">{project.description}</div>
       <div className="proj-stack">
