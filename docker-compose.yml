@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    build: ./frontend
+    build: ./portoflio_app
     ports:
       - "80:80"
     depends_on:
@@ -11,7 +11,7 @@ services:
       - app-network
 
   app:
-    build: ./backend
+    build: ./portfolio_api
     ports:
       - "8000:8080"
     networks:
