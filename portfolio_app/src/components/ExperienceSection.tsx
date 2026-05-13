@@ -26,7 +26,7 @@ export function ExperienceSection() {
     <section id="experiencia" className="section">
       <div className="section-label">Experiência</div>
       <div>
-        {(data?.map ?? [])((exp: Experience, i: number) => (
+        {(data ?? []).map((exp: Experience, i: number) => (
           <ExperienceItem key={i} exp={exp} />
         ))}
       </div>

@@ -26,7 +26,7 @@ export function ProjectsSection() {
     <section id="projetos" className="section">
       <div className="section-label">Projetos</div>
       <div className="projects-grid">
-        {(data?.map ?? [])((p: Project, index) => (
+        {(data ?? []).map((p: Project, index) => (
           <ProjectCard key={p.id} project={p} index={index} />
         ))}
       </div>
