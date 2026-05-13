@@ -1,9 +1,14 @@
 version: '3.8'
-services:
-  web:
-    build: .
-    image: portfolio_app:latest
-    ports:
-      - "5173:5173"
-    restart: unless-stopped
 
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"

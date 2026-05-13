@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+  app:
+    build: ./backend
+    ports:
+      - "8000:8080"
+    networks:
+      - app-network
+
+  db:
+    image: postgres:15
+    networks:
+      - app-network
+
+networks:
+  app-network:
