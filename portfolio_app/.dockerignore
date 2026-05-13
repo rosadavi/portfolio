@@ -1,0 +1,12 @@
+node_modules
+dist
+.env
+.git
+.gitignore
+npm-debug.log
+.DS_Store
+.idea
+.vscode
+coverage
+/.pnp
+/.pnp.js
