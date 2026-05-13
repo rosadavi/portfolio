@@ -15,7 +15,7 @@ export function StackSection() {
     <section id="stack" className="section">
       <div className="section-label">Stack técnica</div>
       <div className="stack-grid">
-        {data.map((item: StackItem) => (
+        {(data?.map ?? [])((item: StackItem) => (
           <div key={item.name} className="stack-item">
             <div className="stack-name">{item.name}</div>
             <div className="stack-type">{item.use}</div>

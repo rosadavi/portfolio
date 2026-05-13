@@ -37,7 +37,7 @@ export function ContactSection() {
     <section id="contato" className="section">
       <div className="section-label">Contato</div>
       <div className="contact-grid">
-        {CONTACT_FIELDS.map(({ label, key, href }) => {
+        {(CONTACT_FIELDS?.map ?? [])(({ label, key, href }) => {
           const value =
             key === "github"
               ? `github.com/${(data as User).github.split("/").pop()}`

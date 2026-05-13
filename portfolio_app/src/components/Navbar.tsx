@@ -6,7 +6,7 @@ export function Navbar() {
     <nav className="nav">
       <span className="nav-logo">davi.rosa</span>
       <ul className="nav-links">
-        {["stack", "projetos", "experiencia", "contato"].map((id) => (
+        {(["stack", "projetos", "experiencia", "contato"].map ?? [])((id) => (
           <li key={id}>
             <button className="nav-link" onClick={() => scrollTo(id)}>
               {id === "experiencia"
